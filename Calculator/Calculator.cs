@@ -56,7 +56,10 @@ namespace Calculator
             foreach (var operation in operations)
             {
                 operation.Value.Input = processedInput;
-                processedInput = operation.Value.Process(operation.Value);
+                do
+                {
+                    processedInput = operation.Value.Process(operation.Value);
+                } while (processedInput.Contains(operation.Key));
             }
 
             decimal result;
@@ -95,6 +98,9 @@ namespace Calculator
 
         public static string ProcessAdditionOrSubtration(Processor operation)
         {
+            if(!operation.Input.Contains("+") && !operation.Input.Contains("-"))
+                return operation.Input;
+
             Regex regex = new Regex(operation.Pattern);
             MatchCollection matches = regex.Matches(operation.Input);
 

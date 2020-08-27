@@ -15,6 +15,17 @@ namespace Calculator.Test
 
         [Theory]
         [InlineData("    1*2*3*4*5", 120)]
+        // ToDo: devision needs to be done one at a  time (order matters here)
+        [InlineData("    100/10/5/2/1", 1)]
+        public void DoSameOperationMultipleTimes(string input, decimal output)
+        {
+            var result = Calculator.Calculate(input);
+            Assert.Equal(output, result);
+        }
+
+
+        [Theory]
+        [InlineData("    1*2*3*4*5", 120)]
         [InlineData("    1*2*3*4/4*5+27-89", -32)]
         public void DoMultipleOperations2(string input, decimal output)
         {
