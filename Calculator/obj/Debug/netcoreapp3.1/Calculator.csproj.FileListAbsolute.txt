@@ -10,3 +10,15 @@ C:\source\Calculator\obj\Debug\netcoreapp3.1\Calculator.csproj.CoreCompileInputs
 C:\source\Calculator\obj\Debug\netcoreapp3.1\Calculator.dll
 C:\source\Calculator\obj\Debug\netcoreapp3.1\Calculator.pdb
 C:\source\Calculator\obj\Debug\netcoreapp3.1\Calculator.genruntimeconfig.cache
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.exe
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.deps.json
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.runtimeconfig.json
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.runtimeconfig.dev.json
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.dll
+C:\source\Calculator\Calculator\bin\Debug\netcoreapp3.1\Calculator.pdb
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.AssemblyInfoInputs.cache
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.AssemblyInfo.cs
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.csproj.CoreCompileInputs.cache
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.dll
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.pdb
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.genruntimeconfig.cache
