@@ -97,6 +97,9 @@ C:\source\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.genruntimeconf
 C:\source\Calculator.Test\bin\Debug\netcoreapp3.1\Calculator.exe
 C:\source\Calculator.Test\bin\Debug\netcoreapp3.1\Calculator.dll
 C:\source\Calculator.Test\bin\Debug\netcoreapp3.1\Calculator.pdb
+C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.csproj.CoreCompileInputs.cache
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\Calculator.exe
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
@@ -155,8 +158,6 @@ C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\de\Microsoft.TestPl
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
-C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
@@ -191,7 +192,6 @@ C:\source\Calculator\Calculator.Test\bin\Debug\netcoreapp3.1\Calculator.pdb
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.csprojAssemblyReference.cache
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.AssemblyInfoInputs.cache
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.AssemblyInfo.cs
-C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.csproj.CoreCompileInputs.cache
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.csproj.CopyComplete
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.dll
 C:\source\Calculator\Calculator.Test\obj\Debug\netcoreapp3.1\Calculator.Test.pdb

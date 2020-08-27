@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 namespace Calculator
 {
-    // ToDo: decimal in the input f's it up
+    //https://regex101.com/
     public class Calculator
     {
-        public static double Calculate(string input)
+        //28 decimal places (decimal precision)
+        private const string NUMBER_WITH_28_PRECISION 
+            = @"\d+\.?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?";
+
+        public static decimal Calculate(string input)
         {
             input = input.Replace(" ", "");
 
@@ -19,31 +24,31 @@ namespace Calculator
             Dictionary<string, Processor> operations =
                 new Dictionary<string, Processor>();
 
-            operations.Add("^", 
-                new Processor(input, 
-                "^", 
-                "-?\\d+\\^-?\\d+",
+            operations.Add("^",
+                new Processor(input,
+                "^",
+                $@"{NUMBER_WITH_28_PRECISION}\^\-?{NUMBER_WITH_28_PRECISION}",
                 ProcessPowerRootDivisionAndMultipication,
-                (x,y) => Math.Pow(x, y)));
+                (x, y) => (decimal)Math.Pow(Convert.ToDouble(x), Convert.ToDouble(y))));
 
             operations.Add("/",
                 new Processor(input,
                 "/",
-                "-?\\d+\\/-?\\d+",
+                $@"{NUMBER_WITH_28_PRECISION}\/\-?{NUMBER_WITH_28_PRECISION}",
                 ProcessPowerRootDivisionAndMultipication,
                 (x, y) => { return x / y; }));
 
             operations.Add("*",
                new Processor(input,
                "*",
-               "-?\\d+\\*-?\\d+",
+               $@"{NUMBER_WITH_28_PRECISION}\*\-?{NUMBER_WITH_28_PRECISION}",
                ProcessPowerRootDivisionAndMultipication,
                (x, y) => { return x * y; }));
 
             operations.Add("+-",
                new Processor(input,
                "+-",
-               "\\+?\\-?\\d+",
+               $@"\+?\-?{NUMBER_WITH_28_PRECISION}", 
                ProcessAdditionOrSubtration,
                null));
 
@@ -54,8 +59,8 @@ namespace Calculator
                 processedInput = operation.Value.Process(operation.Value);
             }
 
-            double result;
-            if (double.TryParse(processedInput, out result))
+            decimal result;
+            if (decimal.TryParse(processedInput, out result))
                 return result;
 
             return 0;
@@ -69,16 +74,20 @@ namespace Calculator
 
             foreach (Match match in matches)
             {
-                double left = 0d;
-                double right = 0d;
-                double operationResult = 0d;
+                decimal left = 0;
+                decimal right = 0;
+                decimal operationResult = 0;
 
                 var numbers = match.Value.Split(operation.Key);
-                double.TryParse(numbers[0], out left);
-                double.TryParse(numbers[1], out right);
+                decimal.TryParse(numbers[0], out left);
+                decimal.TryParse(numbers[1], out right);
                 operationResult = operation.MathFunction(left, right);
 
-                operation.Input = operation.Input.Replace(match.Value, operationResult.ToString());
+                var operationResultString = operationResult.ToString();
+
+                operation.Input = operation.Input
+                    .Replace(match.Value, operationResultString)
+                    .Replace("--", string.Empty);
             }
 
             return operation.Input;
@@ -86,20 +95,14 @@ namespace Calculator
 
         public static string ProcessAdditionOrSubtration(Processor operation)
         {
-            if (!operation.Input.Contains("+") && !operation.Input.Contains("-"))
-                return operation.Input;
-
-            if (operation.Input.Contains("."))
-                return operation.Input;
-
             Regex regex = new Regex(operation.Pattern);
             MatchCollection matches = regex.Matches(operation.Input);
 
-            double value = 0d;
-            double operationResult = 0;
+            decimal value = 0m;
+            decimal operationResult = 0m;
             foreach (Match match in matches)
             {
-                double.TryParse(match.Value, out value);
+                decimal.TryParse(match.Value, out value);
                 operationResult = operationResult + value;
             }
 
@@ -113,13 +116,13 @@ namespace Calculator
         public readonly string Key;
         public readonly string Pattern;
         public Func<Processor, string> Process { get; }
-        public Func<double, double, double> MathFunction { get; }
+        public Func<decimal, decimal, decimal> MathFunction { get; }
 
         public Processor(string input, 
             string key, 
             string pattern, 
             Func<Processor, string> process, 
-            Func<double, double, double> mathProcessor)
+            Func<decimal, decimal, decimal> mathProcessor)
         {
             Input = input;
             Key = key;
