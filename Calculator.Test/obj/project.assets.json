@@ -3493,11 +3493,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\Calculator.Test\\Calculator.Test.csproj",
+      "projectUniqueName": "C:\\source\\Calculator\\Calculator.Test\\Calculator.Test.csproj",
       "projectName": "Calculator.Test",
-      "projectPath": "C:\\source\\Calculator.Test\\Calculator.Test.csproj",
+      "projectPath": "C:\\source\\Calculator\\Calculator.Test\\Calculator.Test.csproj",
       "packagesPath": "C:\\Users\\upend\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\Calculator.Test\\obj\\",
+      "outputPath": "C:\\source\\Calculator\\Calculator.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -3518,8 +3518,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\source\\Calculator\\Calculator.csproj": {
-              "projectPath": "C:\\source\\Calculator\\Calculator.csproj"
+            "C:\\source\\Calculator\\Calculator\\Calculator.csproj": {
+              "projectPath": "C:\\source\\Calculator\\Calculator\\Calculator.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\Calculator\\Calculator.csproj": {}
+    "C:\\source\\Calculator\\Calculator\\Calculator.csproj": {}
   },
   "projects": {
-    "C:\\source\\Calculator\\Calculator.csproj": {
+    "C:\\source\\Calculator\\Calculator\\Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\Calculator\\Calculator.csproj",
+        "projectUniqueName": "C:\\source\\Calculator\\Calculator\\Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "C:\\source\\Calculator\\Calculator.csproj",
+        "projectPath": "C:\\source\\Calculator\\Calculator\\Calculator.csproj",
         "packagesPath": "C:\\Users\\upend\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\Calculator\\obj\\",
+        "outputPath": "C:\\source\\Calculator\\Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
