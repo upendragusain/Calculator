@@ -22,3 +22,4 @@ C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.csproj.CoreCo
 C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.dll
 C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.pdb
 C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.genruntimeconfig.cache
+C:\source\Calculator\Calculator\obj\Debug\netcoreapp3.1\Calculator.csprojAssemblyReference.cache

@@ -14,11 +14,15 @@ namespace Calculator
                 return 0;
 
             //BODMAS
-            Dictionary<string, Operation> operations =
-                new Dictionary<string, Operation>();
+            Dictionary<string, Processor> operations =
+                new Dictionary<string, Processor>();
 
-            operations.Add("^", new Operation("-?\\d+\\^-?\\d+",
-                ProcessPowerAndRoot));
+            operations.Add("^", 
+                new Processor(input, 
+                "^", 
+                "-?\\d+\\^-?\\d+",
+                ProcessPowerRootDivisionAndMultipication,
+                (x,y) => Math.Pow(x, y)));
 
             //operations.Add("/", new Operation("-?\\d+\\/-?\\d+",
             //    (x, y) => { return x / y; }));
@@ -32,7 +36,7 @@ namespace Calculator
             string processedInput = string.Empty;
             foreach (var operation in operations)
             {
-                processedInput = operation.Value.Process(input, operation.Value.Pattern, operation.Key);
+                processedInput = operation.Value.Process(operation.Value);
             }
 
             double result;
@@ -43,10 +47,11 @@ namespace Calculator
         }
 
         //pow
-        public static string ProcessPowerAndRoot(string input, string pattern, string key)
+        public static string ProcessPowerRootDivisionAndMultipication(Processor operation)
         {
-            Regex regex = new Regex(pattern);
-            MatchCollection matches = regex.Matches(input);
+            Regex regex = new Regex(operation.Pattern);
+            MatchCollection matches = regex.Matches(operation.Input);
+            var input = operation.Input;
 
             foreach (Match match in matches)
             {
@@ -54,25 +59,37 @@ namespace Calculator
                 double right = 0d;
                 double operationResult = 0d;
 
-                var numbers = match.Value.Split(key);
+                var numbers = match.Value.Split(operation.Key);
                 double.TryParse(numbers[0], out left);
                 double.TryParse(numbers[1], out right);
-                operationResult = Math.Pow(left, right);
+                operationResult = operation.MathFunction(left, right);
 
-                input = input.Replace(match.Value, operationResult.ToString());
+                input = operation.Input.Replace(match.Value, operationResult.ToString());
             }
+
             return input;
         }
     }
 
-    public class Operation
+    public class Processor
     {
-        public string Pattern { get; }
-        public Func<string, string, string, string> Process { get; }
-        public Operation(string pattern, Func<string, string, string, string> function)
+        public readonly string Input;
+        public readonly string Key;
+        public readonly string Pattern;
+        public Func<Processor, string> Process { get; }
+        public Func<double, double, double> MathFunction { get; }
+
+        public Processor(string input, 
+            string key, 
+            string pattern, 
+            Func<Processor, string> process, 
+            Func<double, double, double> mathProcessor)
         {
+            Input = input;
+            Key = key;
             Pattern = pattern;
-            Process = function;
+            Process = process;
+            MathFunction = mathProcessor;
         }
     }
 }
