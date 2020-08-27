@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Calculator
 {
+    // ToDo: decimal in the input f's it up
     public class Calculator
     {
         public static double Calculate(string input)
@@ -38,12 +40,17 @@ namespace Calculator
                ProcessPowerRootDivisionAndMultipication,
                (x, y) => { return x * y; }));
 
-            //operations.Add("+OR-", new Operation("[\\+\\-]?\\d+",
-            //   (x, y) => { return x + y; }));
+            operations.Add("+-",
+               new Processor(input,
+               "+-",
+               "\\+?\\-?\\d+",
+               ProcessAdditionOrSubtration,
+               null));
 
-            string processedInput = string.Empty;
+            string processedInput = operations.First().Value.Input;
             foreach (var operation in operations)
             {
+                operation.Value.Input = processedInput;
                 processedInput = operation.Value.Process(operation.Value);
             }
 
@@ -59,7 +66,6 @@ namespace Calculator
         {
             Regex regex = new Regex(operation.Pattern);
             MatchCollection matches = regex.Matches(operation.Input);
-            var input = operation.Input;
 
             foreach (Match match in matches)
             {
@@ -72,16 +78,38 @@ namespace Calculator
                 double.TryParse(numbers[1], out right);
                 operationResult = operation.MathFunction(left, right);
 
-                input = operation.Input.Replace(match.Value, operationResult.ToString());
+                operation.Input = operation.Input.Replace(match.Value, operationResult.ToString());
             }
 
-            return input;
+            return operation.Input;
+        }
+
+        public static string ProcessAdditionOrSubtration(Processor operation)
+        {
+            if (!operation.Input.Contains("+") && !operation.Input.Contains("-"))
+                return operation.Input;
+
+            if (operation.Input.Contains("."))
+                return operation.Input;
+
+            Regex regex = new Regex(operation.Pattern);
+            MatchCollection matches = regex.Matches(operation.Input);
+
+            double value = 0d;
+            double operationResult = 0;
+            foreach (Match match in matches)
+            {
+                double.TryParse(match.Value, out value);
+                operationResult = operationResult + value;
+            }
+
+            return matches.Count > 0 ? operationResult.ToString() : operation.Input;
         }
     }
 
     public class Processor
     {
-        public readonly string Input;
+        public string Input;
         public readonly string Key;
         public readonly string Pattern;
         public Func<Processor, string> Process { get; }

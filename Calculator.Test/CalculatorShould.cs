@@ -5,17 +5,21 @@ namespace Calculator.Test
 {
     public class CalculatorShould
     {
-        //[Fact]
-        //public void DoPowers()
-        //{
-        //    //var result = Calculator.Calculate(" 2 + 2 ");
-        //    //var result = Calculator.Calculate("    3*5+123+11^3-45+5*2^12+39/13");
+        [Theory]
+        [InlineData("    3*5+123+11^3-45+5*2^12+39/13", 21907d)]
+        public void DoMultipleOperations1(string input, double output)
+        {
+            var result = Calculator.Calculate(input);
+            Assert.Equal(output, result);
+        }
 
-        //    var result = Calculator.Calculate("    2^5  ");
-
-        //    result = Calculator.Calculate("    -2^5  ");
-
-        //}
+        [Theory]
+        [InlineData("    1*2*3*4/4*5+27-89", -32d)]
+        public void DoMultipleOperations2(string input, double output)
+        {
+            var result = Calculator.Calculate(input);
+            Assert.Equal(output, result);
+        }
 
         [Theory]
         [InlineData("    2^5  ", 32d)]
