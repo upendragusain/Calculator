@@ -24,11 +24,19 @@ namespace Calculator
                 ProcessPowerRootDivisionAndMultipication,
                 (x,y) => Math.Pow(x, y)));
 
-            //operations.Add("/", new Operation("-?\\d+\\/-?\\d+",
-            //    (x, y) => { return x / y; }));
+            operations.Add("/",
+                new Processor(input,
+                "/",
+                "-?\\d+\\/-?\\d+",
+                ProcessPowerRootDivisionAndMultipication,
+                (x, y) => { return x / y; }));
 
-            //operations.Add("*", new Operation("-?\\d+\\*-?\\d+",
-            //    (x, y) => { return x * y; }));
+            operations.Add("*",
+               new Processor(input,
+               "*",
+               "-?\\d+\\*-?\\d+",
+               ProcessPowerRootDivisionAndMultipication,
+               (x, y) => { return x * y; }));
 
             //operations.Add("+OR-", new Operation("[\\+\\-]?\\d+",
             //   (x, y) => { return x + y; }));
